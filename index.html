@@ -1,140 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrTimeFlow</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#4a90e2',
-                        secondary: '#7c4dff',
-                        accent: '#4fd1c5'
-                    }
-                }
-            }
-        }
-    </script>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrTimeFlow – Termine in Gleisdorf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
-        .nav-logo {
-            height: 40px;
-            width: auto;
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #f9f9f9;
+      }
+
+      header {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        color: white;
+        text-align: center;
+        padding: 3rem 1rem;
+      }
+
+      header img {
+        max-width: 160px;
+        margin-bottom: 1rem;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin: 2rem;
+      }
+
+      .search-container input {
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        width: 100%;
+        max-width: 500px;
+        font-size: 1rem;
+      }
+
+      .categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .category {
+        background-color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .category:hover {
+        background-color: #f3f4f6;
+      }
+
+      .category span {
+        display: block;
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+        font-weight: 600;
+      }
+
+      .businesses {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem 4rem;
+      }
+
+      .businesses h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .business-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .business-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .business-card h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .business-card p {
+        margin: 0 0 1rem;
+        color: #4b5563;
+      }
+
+      .business-card a {
+        text-decoration: none;
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        transition: background-color 0.2s;
+      }
+
+      .business-card a:hover {
+        background-color: #2563eb;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.5rem;
         }
-        
-        .hero-logo {
-            max-width: 400px;
-            width: 90%;
-            height: auto;
-            margin: 0 auto 2rem;
-        }
+      }
     </style>
-</head>
-<body class="bg-gray-50">
-    <div id="root"></div>
-    <script type="text/babel">
-        const businessData = [
-            {
-                id: 1,
-                name: "Style Studio",
-                category: "Hair & Beauty",
-                description: "Professional hair styling and beauty treatments",
-                logo: "💇‍♀️"
-            },
-            {
-                id: 2,
-                name: "Wellness Oasis",
-                category: "Wellness & Spa",
-                description: "Relaxing spa treatments and massages",
-                logo: "💆‍♀️"
-            },
-            {
-                id: 3,
-                name: "Auto Care Plus",
-                category: "Auto Service",
-                description: "Complete auto maintenance and repair",
-                logo: "🚗"
-            }
-        ];
+  </head>
+  <body>
+    <header>
+      <img src="BigLogoWithName.png" alt="UrTimeFlow Logo" />
+      <h1>Deine zentrale Terminplattform für Gleisdorf</h1>
+    </header>
 
-        function BusinessCard({ business }) {
-            return (
-                <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                    <div className="text-4xl mb-4">{business.logo}</div>
-                    <h3 className="text-xl font-semibold mb-2">{business.name}</h3>
-                    <p className="text-gray-600 mb-4">{business.description}</p>
-                    <button className="bg-primary text-white px-4 py-2 rounded-xl hover:bg-opacity-90 transition-colors">
-                        View Appointments
-                    </button>
-                </div>
-            );
-        }
+    <div class="search-container">
+      <input type="text" placeholder="Suche nach Dienstleistung oder Unternehmen…" />
+    </div>
 
-        function App() {
-            const categories = [
-                { name: "Hair & Beauty", icon: "💇‍♀️" },
-                { name: "Wellness & Spa", icon: "💆‍♀️" },
-                { name: "Auto Service", icon: "🚗" },
-                { name: "Health Care", icon: "⚕️" },
-            ];
+    <section class="categories">
+      <div class="category">
+        <div>💇‍♂️</div>
+        <span>Hair & Beauty</span>
+      </div>
+      <div class="category">
+        <div>💆‍♀️</div>
+        <span>Wellness & Spa</span>
+      </div>
+      <div class="category">
+        <div>🚗</div>
+        <span>Auto Service</span>
+      </div>
+      <div class="category">
+        <div>🏥</div>
+        <span>Gesundheit</span>
+      </div>
+    </section>
 
-            return (
-                <div className="min-h-screen">
-                    <nav className="bg-white shadow-sm p-4">
-                        <div className="max-w-4xl mx-auto">
-                            <img 
-                                src="Logo.png" 
-                                alt="UrTimeFlow Logo" 
-                                className="nav-logo"
-                            />
-                        </div>
-                    </nav>
-                    <section className="bg-gradient-to-r from-primary to-secondary text-white py-16 px-4">
-                        <div className="max-w-4xl mx-auto text-center">
-                            <img 
-                                src="BigLogoWithName.png" 
-                                alt="UrTimeFlow" 
-                                className="hero-logo"
-                            />
-                            <p className="text-xl">Your central booking platform for services in Gleisdorf</p>
-                        </div>
-                    </section>
-                    
-                    <div className="max-w-4xl mx-auto px-4 py-8">
-                        <div className="mb-12">
-                            <input 
-                                type="text" 
-                                className="w-full p-4 rounded-2xl border border-gray-200 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
-                                placeholder="Search for services or companies..."
-                            />
-                        </div>
-
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                            {categories.map((category, index) => (
-                                <div key={index} className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow text-center cursor-pointer">
-                                    <div className="text-3xl mb-2">{category.icon}</div>
-                                    <h3 className="font-medium">{category.name}</h3>
-                                </div>
-                            ))}
-                        </div>
-
-                        <h2 className="text-2xl font-semibold mb-6">Local Businesses</h2>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {businessData.map(business => (
-                                <BusinessCard key={business.id} business={business} />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-    </script>
-</body>
+    <section class="businesses">
+      <h2>Lokale Unternehmen</h2>
+      <div class="business-list">
+        <div class="business-card">
+          <h3>Style Studio</h3>
+          <p>Professionelle Haarschnitte und Beauty-Behandlungen.</p>
+          <a href="#">Termin Buchen</a>
+        </div>
+        <div class="business-card">
+          <h3>Wellness Oasis</h3>
+          <p>Entspannende Spa-Angebote und Massagen.</p>
+          <a href="#">Termin Buchen</a>
+        </div>
+        <div class="business-card">
+          <h3>Auto Care Plus</h3>
+          <p>Kompletter Service rund ums Auto.</p>
+          <a href="#">Termin Buchen</a>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
