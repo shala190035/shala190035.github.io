@@ -1,8 +1,145 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to My Portfolio</h1>
+            <p>Web Developer & Designer</p>
+        </div>
+    </section>
+
+    <section class="content" id="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate developer focused on creating beautiful and functional web experiences.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Skills</h3>
+                <p>HTML, CSS, JavaScript, React, Node.js</p>
+            </div>
+            <div class="card">
+                <h3>Experience</h3>
+                <p>5+ years of web development experience</p>
+            </div>
+            <div class="card">
+                <h3>Education</h3>
+                <p>Bachelor's in Computer Science</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content" id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Project 1</h3>
+                <p>Description of your first project</p>
+            </div>
+            <div class="card">
+                <h3>Project 2</h3>
+                <p>Description of your second project</p>
+            </div>
+            <div class="card">
+                <h3>Project 3</h3>
+                <p>Description of your third project</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content" id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+            <p>Get in touch: email@example.com</p>
+        </div>
+    </section>
 </body>
 </html>
