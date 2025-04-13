@@ -21,6 +21,19 @@
             }
         }
     </script>
+    <style>
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .hero-logo {
+            max-width: 400px;
+            width: 90%;
+            height: auto;
+            margin: 0 auto 2rem;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <div id="root"></div>
@@ -72,9 +85,22 @@
 
             return (
                 <div className="min-h-screen">
+                    <nav className="bg-white shadow-sm p-4">
+                        <div className="max-w-4xl mx-auto">
+                            <img 
+                                src="Logo.png" 
+                                alt="UrTimeFlow Logo" 
+                                className="nav-logo"
+                            />
+                        </div>
+                    </nav>
                     <section className="bg-gradient-to-r from-primary to-secondary text-white py-16 px-4">
                         <div className="max-w-4xl mx-auto text-center">
-                            <h1 className="text-4xl font-bold mb-4">Welcome to UrTimeFlow</h1>
+                            <img 
+                                src="BigLogoWithName.png" 
+                                alt="UrTimeFlow" 
+                                className="hero-logo"
+                            />
                             <p className="text-xl">Your central booking platform for services in Gleisdorf</p>
                         </div>
                     </section>
