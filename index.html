@@ -7,62 +7,61 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4a90e2',
+                        secondary: '#7c4dff',
+                        accent: '#4fd1c5'
+                    }
+                }
+            }
         }
-
-        .hero {
-            background: linear-gradient(135deg, #4a90e2, #7c4dff);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .search-bar {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1.1rem;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .category-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+    </script>
 </head>
-<body>
+<body class="bg-gray-50">
     <div id="root"></div>
     <script type="text/babel">
+        const businessData = [
+            {
+                id: 1,
+                name: "Style Studio",
+                category: "Hair & Beauty",
+                description: "Professional hair styling and beauty treatments",
+                logo: "💇‍♀️"
+            },
+            {
+                id: 2,
+                name: "Wellness Oasis",
+                category: "Wellness & Spa",
+                description: "Relaxing spa treatments and massages",
+                logo: "💆‍♀️"
+            },
+            {
+                id: 3,
+                name: "Auto Care Plus",
+                category: "Auto Service",
+                description: "Complete auto maintenance and repair",
+                logo: "🚗"
+            }
+        ];
+
+        function BusinessCard({ business }) {
+            return (
+                <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div className="text-4xl mb-4">{business.logo}</div>
+                    <h3 className="text-xl font-semibold mb-2">{business.name}</h3>
+                    <p className="text-gray-600 mb-4">{business.description}</p>
+                    <button className="bg-primary text-white px-4 py-2 rounded-xl hover:bg-opacity-90 transition-colors">
+                        View Appointments
+                    </button>
+                </div>
+            );
+        }
+
         function App() {
             const categories = [
                 { name: "Hair & Beauty", icon: "💇‍♀️" },
@@ -72,27 +71,38 @@
             ];
 
             return (
-                <div>
-                    <section className="hero">
-                        <h1>Welcome to UrTimeFlow</h1>
-                        <p>Your central booking platform for services in Gleisdorf</p>
+                <div className="min-h-screen">
+                    <section className="bg-gradient-to-r from-primary to-secondary text-white py-16 px-4">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h1 className="text-4xl font-bold mb-4">Welcome to UrTimeFlow</h1>
+                            <p className="text-xl">Your central booking platform for services in Gleisdorf</p>
+                        </div>
                     </section>
                     
-                    <div className="search-bar">
-                        <input 
-                            type="text" 
-                            className="search-input"
-                            placeholder="Search for services or companies..."
-                        />
-                    </div>
+                    <div className="max-w-4xl mx-auto px-4 py-8">
+                        <div className="mb-12">
+                            <input 
+                                type="text" 
+                                className="w-full p-4 rounded-2xl border border-gray-200 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
+                                placeholder="Search for services or companies..."
+                            />
+                        </div>
 
-                    <div className="categories">
-                        {categories.map((category, index) => (
-                            <div key={index} className="category-card">
-                                <div style={{ fontSize: '3rem' }}>{category.icon}</div>
-                                <h3>{category.name}</h3>
-                            </div>
-                        ))}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                            {categories.map((category, index) => (
+                                <div key={index} className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow text-center cursor-pointer">
+                                    <div className="text-3xl mb-2">{category.icon}</div>
+                                    <h3 className="font-medium">{category.name}</h3>
+                                </div>
+                            ))}
+                        </div>
+
+                        <h2 className="text-2xl font-semibold mb-6">Local Businesses</h2>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {businessData.map(business => (
+                                <BusinessCard key={business.id} business={business} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             );
