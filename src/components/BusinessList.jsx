@@ -5,22 +5,22 @@ const businesses = [
     id: 1,
     name: "Style Studio",
     description: "Premium hair salon with expert stylists",
-    category: "Hair & Beauty",
-    imageUrl: "https://placekitten.com/200/200" // Placeholder image
+    logo: "/logos/style-studio.png",
+    category: "Hair & Beauty"
   },
   {
     id: 2,
     name: "Zen Spa",
     description: "Relaxing massage and wellness treatments",
-    category: "Wellness",
-    imageUrl: "https://placekitten.com/201/201"
+    logo: "/logos/zen-spa.png",
+    category: "Wellness"
   },
   {
     id: 3,
     name: "AutoCare Plus",
     description: "Professional auto repair and maintenance",
-    category: "Auto Service",
-    imageUrl: "https://placekitten.com/202/202"
+    logo: "/logos/autocare.png",
+    category: "Auto Service"
   }
 ];
 
@@ -29,15 +29,17 @@ export default function BusinessList() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {businesses.map((business) => (
         <div key={business.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-          <img 
-            src={business.imageUrl} 
-            alt={business.name} 
-            className="w-full h-48 object-cover"
-          />
           <div className="p-6">
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">{business.name}</h3>
-              <p className="text-sm text-blue-600">{business.category}</p>
+            <div className="flex items-center mb-4">
+              <img 
+                src={business.logo} 
+                alt={business.name}
+                className="w-12 h-12 rounded-xl object-cover"
+              />
+              <div className="ml-4">
+                <h3 className="text-lg font-semibold text-gray-900">{business.name}</h3>
+                <p className="text-sm text-blue-600">{business.category}</p>
+              </div>
             </div>
             <p className="text-gray-600 mb-4">{business.description}</p>
             <Link 
