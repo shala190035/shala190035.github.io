@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
       <header className="flex flex-col items-center justify-center py-10">
-        <img src="/public/BigLogoWithName.png" alt="UrTimeFlow Logo" className="w-48 h-auto" />
+        <img src="/BigLogoWithName.png" alt="UrTimeFlow Logo" className="w-48 h-auto" />
         <h1 className="text-2xl font-bold mt-4">Your central booking platform for services in Gleisdorf</h1>
       </header>
 
@@ -44,7 +44,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3].map((business) => (
               <div key={business} className="p-4 bg-white text-black rounded-lg shadow-md hover:shadow-lg">
-                <img src="/public/Logo.png" alt="Business Logo" className="w-12 h-12 mb-2" />
+                <img src="/Logo.png" alt="Business Logo" className="w-12 h-12 mb-2" />
                 <h3 className="font-bold">Business Name {business}</h3>
                 <p className="text-sm">Description of the business and services offered.</p>
                 <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
