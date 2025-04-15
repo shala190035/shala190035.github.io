@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friseure auswählen - City Hair Salon Gleisdorf - UrTimeFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="index.html">
+                    <img src="public/BigLogoWithName2.png" alt="UrTimeFlow Logo" class="h-16 md:h-20 mr-4">
+                </a>
+            </div>
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800">UrTimeFlow – Dein zentraler Buchungsplatz in Gleisdorf</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Back Button -->
+            <div class="mb-6">
+                <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Zurück zur Übersicht
+                </a>
+            </div>
+
+            <!-- Salon Info -->
+            <div class="flex flex-col md:flex-row items-center mb-8 bg-white p-6 rounded-lg shadow-md">
+                <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+                    <img src="public/CityHairSalon.png" alt="City Hair Salon Logo" class="h-24">
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">City Hair Salon Gleisdorf</h2>
+                    <p class="text-gray-600 mt-2">Moderne Haarschnitte, Styling und Farbtechniken für die ganze Familie in entspannter Atmosphäre.</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-6">Bitte wähle einen Friseur für deinen Termin:</h3>
+
+            <!-- Stylists Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Stylist 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 flex justify-center">
+                        <div class="w-24 h-24 rounded-full bg-white p-1 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Lisa</h4>
+                        <p class="text-gray-600 mb-4">Spezialisiert auf moderne Damen-Haarschnitte und Coloration. 5 Jahre Erfahrung.</p>
+                        
+                        <div class="space-y-3">
+                            <p class="text-sm font-medium text-gray-700">Verfügbare Dienstleistungen:</p>
+                            
+                            <a href="#" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 text-center rounded-lg transition-colors duration-300 flex items-center justify-between px-4">
+                                <span>Herrenschnitt</span>
+                                <span class="bg-blue-400 px-2 py-1 rounded text-xs">ab 25€</span>
+                            </a>
+                            
+                            <a href="#" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 text-center rounded-lg transition-colors duration-300 flex items-center justify-between px-4">
+                                <span>Frauenhaarschnitt</span>
+                                <span class="bg-blue-400 px-2 py-1 rounded text-xs">ab 45€</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stylist 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 flex justify-center">
+                        <div class="w-24 h-24 rounded-full bg-white p-1 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Marco</h4>
+                        <p class="text-gray-600 mb-4">Experte für Herrenschnitte, Bärte und trendige Kurzhaarfrisuren. 7 Jahre Erfahrung.</p>
+                        <a href="#" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 text-center rounded-lg transition-colors duration-300">
+                            Termin bei Marco buchen
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stylist 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 flex justify-center">
+                        <div class="w-24 h-24 rounded-full bg-white p-1 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Sophia</h4>
+                        <p class="text-gray-600 mb-4">Spezialistin für Balayage, Highlights und kreative Farbtechniken. 6 Jahre Erfahrung.</p>
+                        <a href="#" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 text-center rounded-lg transition-colors duration-300">
+                            Termin bei Sophia buchen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="bg-blue-50 rounded-lg p-6 border border-blue-100">
+                <h4 class="font-semibold text-lg mb-2">Öffnungszeiten:</h4>
+                <ul class="text-gray-700 mb-4">
+                    <li>Mo - Fr: 9:00 - 18:00 Uhr</li>
+                    <li>Sa: 9:00 - 15:00 Uhr</li>
+                    <li>So: Geschlossen</li>
+                </ul>
+                <p class="text-gray-700">Adresse: Hauptplatz 12, 8200 Gleisdorf</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-16">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>© 2025 UrTimeFlow - Alle Rechte vorbehalten</p>
+        </div>
+    </footer>
+</body>
+</html>
