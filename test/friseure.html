@@ -10,6 +10,18 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        /* Cookie Banner Styling */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+        #cookie-banner.hidden {
+            transform: translateY(100%);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -129,14 +141,275 @@
                 </ul>
                 <p class="text-gray-700">Adresse: Hauptplatz 12, 8200 Gleisdorf</p>
             </div>
+
+            <!-- Data Processing Information -->
+            <div class="mt-16 bg-blue-50 p-6 rounded-lg border border-blue-100">
+                <h4 class="font-semibold text-lg mb-2">Datenschutzhinweis:</h4>
+                <p class="text-gray-700 mb-4">
+                    Bei der Terminbuchung verarbeiten wir Ihre Daten, um den gewählten Termin beim Dienstleister zu reservieren.
+                    Ihre Daten werden an den jeweiligen Dienstleister weitergegeben, um den Termin durchzuführen.
+                    Detaillierte Informationen finden Sie in unserer <a href="datenschutz.html" class="text-blue-600 hover:underline">Datenschutzerklärung</a>.
+                </p>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 mt-16">
-        <div class="container mx-auto px-4 text-center text-gray-400">
-            <p>© 2025 UrTimeFlow - Alle Rechte vorbehalten</p>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 mb-6">
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Service</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Über uns</a></li>
+                        <li><a href="index.html" class="hover:text-white transition-colors">Alle Dienstleister</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Hilfe & FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Rechtliches</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">AGB</a></li>
+                        <li><a href="datenschutz.html" class="hover:text-white transition-colors">Datenschutz</a></li>
+                        <li><button id="open-cookie-settings" class="text-left text-gray-400 hover:text-white transition-colors">Cookie-Einstellungen</button></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center text-gray-400">
+                <p>© 2025 UrTimeFlow - Alle Rechte vorbehalten</p>
+                <p class="mt-2 text-sm">Verantwortlich für den Inhalt: UrTimeFlow GmbH, Hauptplatz 1, 8200 Gleisdorf, Österreich</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="bg-white shadow-lg border-t-2 border-blue-500 hidden">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div class="mb-4 md:mb-0 md:mr-6">
+                    <h3 class="text-lg font-semibold mb-2">Wir respektieren Ihre Privatsphäre</h3>
+                    <p class="text-gray-600 text-sm">
+                        Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
+                        Mit Ihrer Zustimmung verwenden wir Cookies für notwendige Funktionen und optional für Analyse und Marketing.
+                        Detaillierte Informationen finden Sie in unserer <a href="datenschutz.html" class="text-blue-600 hover:underline">Datenschutzerklärung</a>.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="accept-all-cookies" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium">
+                        Alle akzeptieren
+                    </button>
+                    <button id="accept-essential-cookies" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-5 py-2 rounded-md text-sm font-medium">
+                        Nur Notwendige
+                    </button>
+                    <button id="open-cookie-settings-banner" class="text-blue-600 hover:text-blue-800 px-5 py-2 text-sm font-medium">
+                        Einstellungen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-settings-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4 overflow-hidden">
+            <div class="border-b px-6 py-4 flex justify-between items-center">
+                <h3 class="text-lg font-semibold">Cookie-Einstellungen</h3>
+                <button id="close-cookie-settings" class="text-gray-400 hover:text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="px-6 py-4 max-h-96 overflow-y-auto">
+                <p class="text-gray-700 mb-4">
+                    Hier können Sie einstellen, welche Cookie-Kategorien Sie zulassen möchten. Bitte beachten Sie, dass einige Cookies notwendig sind, 
+                    damit unsere Website ordnungsgemäß funktioniert und nicht deaktiviert werden können.
+                </p>
+                
+                <!-- Essential Cookies -->
+                <div class="mb-4 p-4 border rounded-md bg-gray-50">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-medium">Notwendige Cookies</h4>
+                            <p class="text-sm text-gray-600 mt-1">Diese Cookies sind erforderlich, damit die Grundfunktionen der Website funktionieren.</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Immer aktiv</span>
+                            <div class="relative">
+                                <input type="checkbox" checked disabled class="sr-only" id="essential-cookies">
+                                <div class="block bg-blue-500 w-10 h-6 rounded-full"></div>
+                                <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform translate-x-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analytics Cookies -->
+                <div class="mb-4 p-4 border rounded-md">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-medium">Analyse-Cookies</h4>
+                            <p class="text-sm text-gray-600 mt-1">Diese Cookies ermöglichen uns, die Nutzung der Website zu analysieren und zu verbessern.</p>
+                        </div>
+                        <div class="relative">
+                            <input type="checkbox" id="analytics-cookies" class="sr-only">
+                            <div class="block bg-gray-300 w-10 h-6 rounded-full"></div>
+                            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marketing Cookies -->
+                <div class="mb-4 p-4 border rounded-md">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-medium">Marketing-Cookies</h4>
+                            <p class="text-sm text-gray-600 mt-1">Diese Cookies helfen uns, Ihnen relevante Angebote und Informationen anzuzeigen.</p>
+                        </div>
+                        <div class="relative">
+                            <input type="checkbox" id="marketing-cookies" class="sr-only">
+                            <div class="block bg-gray-300 w-10 h-6 rounded-full"></div>
+                            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t px-6 py-4 flex justify-end">
+                <button id="save-cookie-settings" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium">
+                    Einstellungen speichern
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Banner and Settings Management
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookie-banner');
+            const cookieSettingsModal = document.getElementById('cookie-settings-modal');
+            const acceptAllBtn = document.getElementById('accept-all-cookies');
+            const acceptEssentialBtn = document.getElementById('accept-essential-cookies');
+            const openCookieSettingsBtn = document.getElementById('open-cookie-settings');
+            const openCookieSettingsBannerBtn = document.getElementById('open-cookie-settings-banner');
+            const closeCookieSettingsBtn = document.getElementById('close-cookie-settings');
+            const saveCookieSettingsBtn = document.getElementById('save-cookie-settings');
+            const analyticsCookiesToggle = document.getElementById('analytics-cookies');
+            const marketingCookiesToggle = document.getElementById('marketing-cookies');
+            
+            // Check if user has already set cookie preferences
+            const cookiePreferences = localStorage.getItem('cookie-preferences');
+            
+            if (!cookiePreferences) {
+                // If no preferences are set, show the cookie banner
+                cookieBanner.classList.remove('hidden');
+            }
+            
+            // Style toggle switches
+            function setupToggleSwitches() {
+                const toggles = document.querySelectorAll('input[type="checkbox"]:not([disabled])');
+                toggles.forEach(toggle => {
+                    const dot = toggle.nextElementSibling.nextElementSibling;
+                    toggle.addEventListener('change', function() {
+                        if (this.checked) {
+                            this.nextElementSibling.classList.remove('bg-gray-300');
+                            this.nextElementSibling.classList.add('bg-blue-500');
+                            dot.classList.add('transform', 'translate-x-4');
+                        } else {
+                            this.nextElementSibling.classList.remove('bg-blue-500');
+                            this.nextElementSibling.classList.add('bg-gray-300');
+                            dot.classList.remove('transform', 'translate-x-4');
+                        }
+                    });
+                });
+            }
+            
+            // Set cookie preferences and hide banner
+            function setCookiePreferences(essential, analytics, marketing) {
+                localStorage.setItem('cookie-preferences', JSON.stringify({
+                    essential: essential,
+                    analytics: analytics,
+                    marketing: marketing,
+                    timestamp: new Date().toISOString()
+                }));
+                
+                cookieBanner.classList.add('hidden');
+                cookieSettingsModal.classList.add('hidden');
+            }
+            
+            // Load cookie preferences if they exist
+            function loadCookiePreferences() {
+                const preferences = localStorage.getItem('cookie-preferences');
+                if (preferences) {
+                    const { analytics, marketing } = JSON.parse(preferences);
+                    analyticsCookiesToggle.checked = analytics;
+                    marketingCookiesToggle.checked = marketing;
+                    
+                    // Update toggle appearance based on loaded preferences
+                    if (analytics) {
+                        analyticsCookiesToggle.nextElementSibling.classList.add('bg-blue-500');
+                        analyticsCookiesToggle.nextElementSibling.classList.remove('bg-gray-300');
+                        analyticsCookiesToggle.nextElementSibling.nextElementSibling.classList.add('transform', 'translate-x-4');
+                    }
+                    
+                    if (marketing) {
+                        marketingCookiesToggle.nextElementSibling.classList.add('bg-blue-500');
+                        marketingCookiesToggle.nextElementSibling.classList.remove('bg-gray-300');
+                        marketingCookiesToggle.nextElementSibling.nextElementSibling.classList.add('transform', 'translate-x-4');
+                    }
+                }
+            }
+            
+            // Accept all cookies
+            acceptAllBtn.addEventListener('click', function() {
+                setCookiePreferences(true, true, true);
+            });
+            
+            // Accept only essential cookies
+            acceptEssentialBtn.addEventListener('click', function() {
+                setCookiePreferences(true, false, false);
+            });
+            
+            // Open cookie settings
+            openCookieSettingsBtn.addEventListener('click', function() {
+                cookieSettingsModal.classList.remove('hidden');
+                loadCookiePreferences();
+            });
+            
+            openCookieSettingsBannerBtn.addEventListener('click', function() {
+                cookieSettingsModal.classList.remove('hidden');
+                loadCookiePreferences();
+            });
+            
+            // Close cookie settings
+            closeCookieSettingsBtn.addEventListener('click', function() {
+                cookieSettingsModal.classList.add('hidden');
+            });
+            
+            // Save cookie settings
+            saveCookieSettingsBtn.addEventListener('click', function() {
+                const analytics = analyticsCookiesToggle.checked;
+                const marketing = marketingCookiesToggle.checked;
+                setCookiePreferences(true, analytics, marketing);
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === cookieSettingsModal) {
+                    cookieSettingsModal.classList.add('hidden');
+                }
+            });
+            
+            setupToggleSwitches();
+        });
+    </script>
 </body>
 </html>
